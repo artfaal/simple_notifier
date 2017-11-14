@@ -31,7 +31,7 @@ def retrieveWebPage(addr):
         return web_handle
 
 def mailsend():
-    debuglevel = 1
+    debuglevel = 0
     smtp = SMTP_SSL()
     smtp.set_debuglevel(debuglevel)
     smtp.connect(SMTP_ADDR, SMTP_PORT)
@@ -76,7 +76,7 @@ class LostFilm():
         print "Сезон: " + str(self.season)
         print "Ждем серию: " + str(self.ep)
 
-    def _check(self):
+    def check(self):
         website_handle = retrieveWebPage(self.url)
         website_text = website_handle.read()
         result = "/%s/season_%d/episode_%d" % (self.name, self.season, self.ep)
@@ -84,12 +84,12 @@ class LostFilm():
         return matches
 
     def go(self):
-        res = _check()
+        res = self.check()
         if res:
-            self.ep=+1
+            self.ep=self.ep+1
+            print 'Теперь ждем %d эпизод' % self.ep
             mailsend()
             print 'send'
 
 ST = LostFilm('http://lostfilm.tv','Stranger_Things', 2,6)
-ST._check()
 ST.go()
