@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+ADDRESS = "http://site.com"
+WORD = "Word for find on page"
+#MSG_IF_MATCH = "Message if match"
+#MSG_IF_NOT_MATCH = "Message if not match"
+DELAY_CHECK = 10 # seconds
+
+SMTP_ADDR = "smtp.gmail.com"
+SMTP_PORT = 465
+SMTP_LOGIN = 'user@gmail.com'
+SMTP_PASSWORD = 'password'
+FROM_FIELD = "PYTHON_PARSER <user@gmail.com>"
+TO_ADDRESS = "to_address@gmail.com"
+SUBJ = "SUBJECT"
+MAIL_MSG_BODY = "Ready to go"
